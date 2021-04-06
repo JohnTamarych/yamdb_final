@@ -56,7 +56,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }} 
         env:
-          SECRET_KEY: p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs
+          SECRET_KEY: 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
         script: |
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
