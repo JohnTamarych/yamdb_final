@@ -48,8 +48,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
-    env:
-        SECRET_KEY: p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs
     steps:
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
@@ -65,8 +63,7 @@ jobs:
           echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-
-          SECRET_KEY=${{ env.SECRET_KEY }}
+          echo SECRET_KEY="p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs" >> .env
 
           sudo docker pull temana/yamdb_final:latest
           sudo docker stop $(sudo docker ps -a -q)
