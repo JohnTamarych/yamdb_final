@@ -55,7 +55,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }} 
-        
         script: |
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
@@ -63,8 +62,7 @@ jobs:
           echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-          echo SECRET_KEY="p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs" >> .env
-
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           sudo docker pull temana/yamdb_final:latest
           sudo docker stop $(sudo docker ps -a -q)
           sudo docker run --rm -d -p 5000:5000 temana/yamdb_final:latest
