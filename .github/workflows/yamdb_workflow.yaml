@@ -66,7 +66,10 @@ jobs:
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
 
           sudo docker pull temana/yamdb_final:latest
-          sudo docker-compose down
+          id=$(docker create temana/yamdb_final:latest)
+          sudo docker cp $id:/yamdb_final/docker-compose.yaml ~/yamdb_final/docker-compose.yaml
+          cd ~/yamdb_final
+          sudo docker-compose rm -v
           sudo docker-compose up -d --force-recreate
   send_message:
     runs-on: ubuntu-latest
