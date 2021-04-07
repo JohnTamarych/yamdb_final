@@ -32,6 +32,6 @@ services:
       - ./static:/var/www/django/static:ro
       - ./media:/var/www/django/media:ro
     ports:
-      - "80:80"
+      - "8084:80"
     depends_on:
       - web
