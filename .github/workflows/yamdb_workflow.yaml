@@ -50,7 +50,6 @@ jobs:
     needs: build_and_push_to_docker_hub
     steps:
     - uses: actions/checkout@v2
-
     - name: copying files from the repository to VM
       uses: appleboy/scp-action@master
       with:
@@ -75,10 +74,9 @@ jobs:
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-
-          sudo docker pull temana/yamdb_final:latest
+          docker pull temana/yamdb_final:latest
           docker-compose down   
-          sudo docker run temana/yamdb_final:latest
+          docker run temana/yamdb_final:latest
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
