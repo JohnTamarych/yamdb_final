@@ -76,7 +76,7 @@ jobs:
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           sudo docker pull temana/yamdb_final:latest
           sudo docker-compose down   
-          sudo docker run temana/yamdb_final:latest
+          sudo docker-compose up
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
