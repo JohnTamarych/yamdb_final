@@ -21,9 +21,8 @@ Docker-compose: https://docs.docker.com/compose/install/- automatic!
 # как запустить и как увидеть, что проект работает:
 `docker-compose up`
 Миграции: `docker-compose run web python manage.py migrate`
-Сборка статики: `docker-compose run web python manage.py dumpdata > fixtures.json`
 Создание админа: `docker-compose run web python manage.py createsuperuser`
-
+При запуске через workflow: Сделать push проекта
 # Технологии:
 Postgresql 10.6: https://www.postgresql.org/download/- automatic!
 Guinicorn 20.0.4: https://docs.gunicorn.org/en/stable/install.html- automatic!
